@@ -1,0 +1,110 @@
+[
+  {
+    "name": "avdBuiltInScript_setDefaultLanguage",
+    "type": "File",
+    "destination": "C:\\AVDImage\\setDefaultLanguage.ps1",
+    "sourceUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/SetDefaultLang.ps1"
+  },
+  {
+    "name": "avdBuiltInScript_setDefaultLanguage-parameter",
+    "type": "PowerShell",
+    "inline": [
+      "C:\\AVDImage\\setDefaultLanguage.ps1 -Language \"English (United States)\""
+    ],
+    "runAsSystem": true,
+    "runElevated": true
+  },
+  {
+    "name": "avdBuiltInScript_setDefaultLanguage-windowsUpdate",
+    "type": "WindowsUpdate"
+  },
+  {
+    "name": "avdBuiltInScript_setDefaultLanguage-windowsRestart",
+    "type": "WindowsRestart",
+    "restartCheckCommand": "",
+    "restartCommand": "",
+    "restartTimeout": "5m"
+  },
+  {
+    "name": "avdBuiltInScript_timeZoneRedirection",
+    "runElevated": true,
+    "runAsSystem": true,
+    "scriptUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/TimezoneRedirection.ps1",
+    "type": "PowerShell"
+  },
+  {
+    "name": "avdBuiltInScript_fsLogixKerberos",
+    "runElevated": true,
+    "runAsSystem": true,
+    "scriptUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/FSLogixKerberos.ps1",
+    "type": "PowerShell"
+  },
+  {
+    "destination": "C:\\AVDImage\\TeamsOptimization.ps1",
+    "name": "avdBuiltInScript_teamsOptimization",
+    "sourceUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/TeamsOptimization.ps1",
+    "type": "File"
+  },
+  {
+    "inline": [
+      "C:\\AVDImage\\TeamsOptimization.ps1 -TeamsDownloadLink \"https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true\" -WebRTCInstaller \"https://aka.ms/msrdcwebrtcsvc/msi\" -VCRedistributableLink \"https://aka.ms/vs/17/release/vc_redist.x64.exe\""
+    ],
+    "name": "avdBuiltInScript_teamsOptimization-parameter",
+    "runAsSystem": true,
+    "runElevated": true,
+    "type": "PowerShell"
+  },
+  {
+    "destination": "C:\\AVDImage\\configureSessionTimeouts.ps1",
+    "name": "avdBuiltInScript_configureSessionTimeouts",
+    "sourceUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/ConfigureSessionTimeoutsV2.ps1",
+    "type": "File"
+  },
+  {
+    "name": "avdBuiltInScript_configureSessionTimeouts-parameter",
+    "inline": [
+      "C:\\AVDImage\\configureSessionTimeouts.ps1 -MaxDisconnectionTime \"60\" -MaxIdleTime \"120\" -MaxConnectionTime \"0\" -RemoteAppLogoffTimeLimit \"0\""
+    ],
+    "runAsSystem": true,
+    "runElevated": true,
+    "type": "PowerShell"
+  },
+  {
+    "name": "avdBuiltInScript_removeAppxPackages",
+    "type": "File",
+    "destination": "C:\\AVDImage\\removeAppxPackages.ps1",
+    "sourceUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/RemoveAppxPackages.ps1"
+  },
+  {
+    "name": "avdBuiltInScript_removeAppxPackages-parameter",
+    "type": "PowerShell",
+    "inline": [
+      "C:\\AVDImage\\removeAppxPackages.ps1 -AppxPackages \"Microsoft.GamingApp\",\"Microsoft.GetHelp\",\"Microsoft.Getstarted\",\"Microsoft.SkypeApp\",\"Microsoft.WindowsCamera\",\"Microsoft.windowscommunicationsapps\",\"Microsoft.WindowsFeedbackHub\",\"Microsoft.WindowsSoundRecorder\",\"Microsoft.Xbox.TCUI\",\"Microsoft.XboxGameOverlay\",\"Microsoft.XboxGamingOverlay\",\"Microsoft.XboxIdentityProvider\",\"Microsoft.XboxSpeechToTextOverlay\",\"Microsoft.YourPhone\",\"Microsoft.ZuneMusic\",\"Microsoft.ZuneVideo\",\"Microsoft.XboxApp\""
+    ],
+    "runAsSystem": true,
+    "runElevated": true
+  },
+  {
+    "destination": "C:\\AVDImage\\OfficeApps.ps1",
+    "name": "avdBuiltInScript_addOfficeApps",
+    "sourceUri": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/CustomImageTemplateScripts/CustomImageTemplateScripts_2023-11-20/ConfigureOfficeApps.ps1",
+    "type": "File"
+  },
+  {
+    "inline": [
+      "C:\\AVDImage\\OfficeApps.ps1 -Type \"Add\" -Applications \"Visio\" -Version \"32\""
+    ],
+    "name": "avdBuiltInScript_addOfficeApps-parameter",
+    "runAsSystem": true,
+    "runElevated": true,
+    "type": "PowerShell"
+  },
+  {
+    "name": "avdBuiltInScript_windowsUpdate",
+    "type": "WindowsUpdate"
+  },
+  {
+    "name": "avdBuiltInScript_windowsUpdate-windowsRestart",
+    "type": "WindowsRestart"
+  }
+]
